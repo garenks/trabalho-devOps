@@ -1,4 +1,4 @@
-# Trabalho - Cloud DevOps (Parte prática)
+# Trabalho - Cloud DevOps 
 
 ## Rodar com Docker Compose
 ```bash
