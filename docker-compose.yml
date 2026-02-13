@@ -1,0 +1,18 @@
+services:
+  pedidos:
+    build: ./services/pedidos
+    container_name: pedidos
+    ports:
+      - "3000:3000"
+
+  pagamentos:
+    build: ./services/pagamentos
+    container_name: pagamentos
+    ports:
+      - "3001:3001"
+
+  estoque:
+    build: ./services/estoque
+    container_name: estoque
+    ports:
+      - "3002:3002"
