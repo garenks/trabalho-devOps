@@ -1,35 +1,80 @@
 # Trabalho - Cloud DevOps 
 
-## Rodar com Docker Compose
-```bash
-docker compose up --build
-```
+# 🧾 Cloud DevOps — Orchestrating Containers and Microservices (Loja Veloz)
 
-Links:
-- http://localhost:3000 (pedidos)
-- http://localhost:3001 (pagamentos)
-- http://localhost:3002 (estoque)
+Este repositório contém a parte prática do trabalho de **Cloud DevOps**, com foco em **microsserviços**, **containerização**, **orquestração**, **CI (GitHub Actions)** e **Infraestrutura como Código (Terraform)**.
 
-## Kubernetes (Docker Desktop)
-Ative Kubernetes no Docker Desktop e rode:
+O projeto simula uma aplicação chamada **Loja Veloz**, dividida em três microsserviços:
 
-```bash
-kubectl config use-context docker-desktop
-kubectl get nodes
-kubectl apply -f k8s/
-kubectl get pods
-kubectl get svc
-kubectl get hpa
-```
+- **Pedidos**
+- **Pagamentos**
+- **Estoque**
 
-## GitHub Actions
-Workflow em `.github/workflows/ci.yml` (build com docker compose).
+---
 
-## Terraform
-Arquivos em `infra/terraform/`.
+## 🎯 Objetivo
 
-```bash
-terraform init
-terraform validate
-terraform plan
-```
+O objetivo do projeto é aplicar os conceitos de DevOps e Cloud, demonstrando:
+
+- Arquitetura baseada em **microsserviços**
+- **Dockerfiles** para cada serviço
+- Orquestração local com **Docker Compose**
+- Orquestração em cluster com **Kubernetes**
+- Pipeline de CI com **GitHub Actions**
+- Estrutura de IaC com **Terraform**
+
+---
+
+## 🧱 Arquitetura
+
+Cada microsserviço é independente e expõe uma API simples HTTP retornando JSON com status.
+
+Portas utilizadas:
+
+| Serviço     | Porta |
+|------------|-------|
+| pedidos     | 3000  |
+| pagamentos  | 3001  |
+| estoque     | 3002  |
+
+---
+
+## 📁 Estrutura do Projeto
+
+```txt
+trabalho-devOps/
+│
+├─ services/
+│   ├─ pedidos/
+│   │   ├─ Dockerfile
+│   │   └─ index.js
+│   ├─ pagamentos/
+│   │   ├─ Dockerfile
+│   │   └─ index.js
+│   └─ estoque/
+│       ├─ Dockerfile
+│       └─ index.js
+│
+├─ k8s/
+│   ├─ pedidos-deployment.yaml
+│   ├─ pedidos-service.yaml
+│   ├─ pagamentos-deployment.yaml
+│   ├─ pagamentos-service.yaml
+│   ├─ estoque-deployment.yaml
+│   ├─ estoque-service.yaml
+│   ├─ configmap.yaml
+│   ├─ secret.yaml
+│   └─ hpa.yaml
+│
+├─ infra/
+│   └─ terraform/
+│       ├─ main.tf
+│       ├─ outputs.tf
+│       └─ variables.tf
+│
+├─ .github/
+│   └─ workflows/
+│       └─ ci.yml
+│
+└─ docker-compose.yml
+
