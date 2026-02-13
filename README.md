@@ -1,4 +1,4 @@
-# Trabalho - Cloud DevOps 
+# Trabalho - Cloud DevOps
 
 # Cloud DevOps — Orchestrating Containers and Microservices (Loja Veloz)
 
@@ -32,7 +32,7 @@ Cada microsserviço é independente e expõe uma API simples HTTP retornando JSO
 Portas utilizadas:
 
 | Serviço     | Porta |
-|------------|-------|
+|-------------|-------|
 | pedidos     | 3000  |
 | pagamentos  | 3001  |
 | estoque     | 3002  |
@@ -77,4 +77,106 @@ trabalho-devOps/
 │       └─ ci.yml
 │
 └─ docker-compose.yml
+```
 
+---
+
+## ✅ Requisitos
+
+Antes de rodar o projeto, é necessário ter instalado:
+
+- Docker Desktop
+- Kubernetes habilitado no Docker Desktop
+- kubectl
+- Terraform
+- Git
+
+---
+
+## Execução com Docker Compose (Local)
+
+### 1) Subir os containers
+
+Na raiz do projeto:
+
+```bash
+docker compose up -d --build
+```
+
+### 2) Verificar containers
+
+```bash
+docker ps
+```
+
+### 3) Testar os serviços
+
+```bash
+curl http://localhost:3000
+curl http://localhost:3001
+curl http://localhost:3002
+```
+
+---
+
+## ☸️ Execução com Kubernetes (Docker Desktop)
+
+### 1) Confirmar cluster ativo
+
+```bash
+kubectl config use-context docker-desktop
+kubectl get nodes
+```
+
+### 2) Aplicar manifests do Kubernetes
+
+Na raiz do projeto:
+
+```bash
+kubectl apply -f k8s/
+```
+
+### 3) Verificar pods e services
+
+```bash
+kubectl get pods
+kubectl get svc
+```
+
+### Acesso aos serviços no Kubernetes (Port Forward)
+
+#### Pedidos
+
+```bash
+kubectl port-forward service/pedidos-service 3000:3000
+```
+
+#### Pagamentos
+
+```bash
+kubectl port-forward service/pagamentos-service 3001:3001
+```
+
+#### Estoque
+
+```bash
+kubectl port-forward service/estoque-service 3002:3002
+```
+
+---
+
+## 🏗️ Terraform (Infraestrutura como Código)
+
+A estrutura Terraform está localizada em:
+
+```
+infra/terraform/
+```
+
+Comandos:
+
+```bash
+cd infra/terraform
+terraform init
+terraform validate
+```
