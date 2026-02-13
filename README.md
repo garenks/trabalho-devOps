@@ -1,6 +1,6 @@
 # Trabalho - Cloud DevOps 
 
-# 🧾 Cloud DevOps — Orchestrating Containers and Microservices (Loja Veloz)
+# Cloud DevOps — Orchestrating Containers and Microservices (Loja Veloz)
 
 Este repositório contém a parte prática do trabalho de **Cloud DevOps**, com foco em **microsserviços**, **containerização**, **orquestração**, **CI (GitHub Actions)** e **Infraestrutura como Código (Terraform)**.
 
@@ -12,7 +12,7 @@ O projeto simula uma aplicação chamada **Loja Veloz**, dividida em três micro
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 O objetivo do projeto é aplicar os conceitos de DevOps e Cloud, demonstrando:
 
@@ -25,7 +25,7 @@ O objetivo do projeto é aplicar os conceitos de DevOps e Cloud, demonstrando:
 
 ---
 
-## 🧱 Arquitetura
+## Arquitetura
 
 Cada microsserviço é independente e expõe uma API simples HTTP retornando JSON com status.
 
@@ -39,7 +39,7 @@ Portas utilizadas:
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```txt
 trabalho-devOps/
